@@ -1,0 +1,911 @@
+* {
+    padding: 0;
+    margin: 0;
+    /*para mantener ancho fijo del width independiente del padding y del border*/
+    box-sizing: border-box;
+}
+
+/*Aplicando CSS GRID al contenido principal*/
+.contenedorPrincipal {
+
+    display: grid;
+    /*separacion entre rejillas*/
+    /* gap: 10px; */
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, auto);
+    grid-template-areas: "header"
+        "about"
+        "joyeria"
+        "testimonios"
+        "contacto"
+        "footer";
+}
+
+.contenedorPrincipal header {
+    grid-area: header;
+}
+
+.contenedorPrincipal .sectionSobre {
+    grid-area: about;
+}
+
+.contenedorPrincipal .sectionJoyeria {
+    grid-area: joyeria;
+}
+
+.contenedorPrincipal .sectionTestimonio {
+    grid-area: testimonios;
+}
+
+.contenedorPrincipal .sectionContactos {
+    grid-area: contacto;
+}
+
+.contenedorPrincipal .contacto {
+    grid-area: footer;
+}
+
+/*Aplicando estiloa cada elemento*/
+.navegacion {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: rgba(101, 89, 103);
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    position: fixed;
+    z-index: 10;
+    font-family: sans-serif;
+}
+
+.navIzquierdo {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.navIzquierdo .logo {
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.navIzquierdo .textoNav {
+    font-size: 13px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.616);
+}
+
+.navegacion .navegador {
+    font-size: 13px;
+}
+
+nav {
+    margin-right: 70px;
+}
+
+/*se tuvo que agregar porque seguramente bootstrap agregó al parecer un bottom a la barra de navegación*/
+nav ul {
+    margin-bottom: 0px;
+}
+
+.logo img {
+    width: 100px;
+    height: 50px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /*para que pase de estar vertical la lista y se ponga vertical*/
+    display: flex;
+}
+
+ul li {
+    position: relative;
+    margin: 0px 20px;
+}
+
+nav li #menuss {
+    display: block;
+    text-decoration: none;
+}
+
+.navegacion #menuss {
+    color: rgba(255, 255, 255, 0.616);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/*----Transición barra debajo de cada elemento del menu----*/
+nav li::after {
+    content: "";
+    height: 3px;
+    width: 0%;
+    background-color: rgba(255, 255, 255, 0.616);
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.4s ease-out;
+}
+
+nav li:hover::after {
+    width: 100%;
+}
+
+/*HEADER*/
+.contenedorPrincipal header {
+    width: 100wh;
+    height: 100vh;
+    background-image: linear-gradient(to top, rgba(140, 130, 141, 0.404)0%, rgba(101, 89, 103, 0.842) 100%), url(/Images/dan-parlante-c7jVTRTUEdg-unsplash.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.textodere p {
+    margin-top: 10px;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.textoizq h2 {
+    margin-top: 10px;
+    font-size: 55px;
+    font-weight: 600;
+}
+
+.textoarriba h2 {
+    margin-top: 320px;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+span {
+    color: rgb(107, 21, 122);
+    height: 100px;
+}
+
+/*---------Animacion texto de entrada header--------*/
+
+/*animacion texto desde la izquierda*/
+@keyframes entradatextoizq {
+    0% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(0%)
+    }
+}
+
+/*nombre de animaicon delay velocidad cantidad de repeticiones*/
+.textoizq {
+    animation: entradatextoizq 1s ease 1;
+}
+
+/*animación texto desde la derecha*/
+@keyframes entradatextodere {
+    0% {
+        transform: translateX(25%);
+    }
+
+    100% {
+        transform: translateX(0%)
+    }
+}
+
+.textodere {
+    animation: entradatextodere 1s ease 1;
+}
+
+/*texto desde arriba*/
+@keyframes entradatextoarriba {
+    0% {
+        transform: translateY(-600%);
+    }
+
+    50% {
+        transform: translateY(50%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.textoarriba {
+    animation: entradatextoarriba 1s ease 1;
+}
+
+.iconos ul li {
+    display: inline-block;
+    margin: 50px 10px;
+    color: rgba(255, 255, 255, 0.616);
+    cursor: pointer;
+}
+
+.iconos ul {
+    padding-left: 0;
+}
+
+i {
+    font-size: 22px;
+
+}
+
+.iconos ul li:hover {
+    color: white;
+    cursor: pointer;
+    transform: scale(1.7);
+    transition: transform 0.5s;
+}
+
+/*Sobre Nosotros*/
+.sobreNosotros {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.sobreNosotros h2 {
+    width: 100%;
+    margin: 60px auto;
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+    color: rgba(101, 89, 103);
+}
+
+.sobreNosotros .textonoso {
+    width: 40%;
+    text-align: justify;
+}
+
+.sobreNosotros img {
+    width: 450px;
+}
+
+/*-------JOYERIA-----*/
+
+.joyeria {
+    margin: 60px 0;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorim {
+    margin: auto;
+    overflow: hidden;
+    width: 100%;
+    padding: 0px 175px;
+    text-align: center;
+    display: inline-block;
+}
+
+.contenedorim #joy {
+    text-align: center;
+    font-size: 30px;
+    color: rgba(101, 89, 103);
+    font-weight: 900;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.contenedorim label {
+    margin: 0 5px;
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: rgb(211, 185, 219);
+    padding: 6px 15px;
+    border-radius: 10px;
+}
+
+/*quitar el seleccionador a los botonradio*/
+input[type="radio"] {
+    display: none;
+} 
+
+.contenedorim label:hover {
+    background-color: rgb(214, 117, 243);
+    padding: 6px 15px;
+    border-radius: 10px;
+}
+
+.imagenes {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    margin-top: 35px;
+}
+
+.images {
+    width: 24%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5)
+}
+
+.images img {
+    width: 100%;
+    height: 100%;
+}
+
+/*transición zoom a imagenes*/
+.images {
+    transition: transform 0.5s;
+}
+
+.images:hover {
+    transform: scale(1.1);
+}
+
+/*ocultar objetos del menu*/
+
+.contenedorim #anillos:checked ~ .imagenes .manillas {
+    display: none;
+}
+
+.contenedorim #anillos:checked ~ .imagenes .collares {
+    display: none;
+}
+
+.contenedorim #manillas:checked ~ .imagenes .anillos {
+    display: none;
+}
+
+.contenedorim #manillas:checked ~ .imagenes .collares {
+    display: none;
+}
+
+.contenedorim #collares:checked ~ .imagenes .manillas {
+    display: none;
+}
+
+.contenedorim #collares:checked ~ .imagenes .anillos {
+    display: none;
+}
+
+/*Testimonios*/
+
+.testimonios #testimo {
+    text-align: center;
+    font-size: 30px;
+    color: rgba(101, 89, 103);
+    font-weight: 900;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.container {
+    margin-top: 5%;
+    background: white;
+}
+
+.img-text {
+    width: 100%;
+    height: 300px;
+    display: block;
+    text-align: center;
+    padding: 45% 5%;
+    background: rgba(101, 89, 103);
+    color: white;
+    border-radius: 15px;
+}
+
+.img-text #tituloInterior {
+    font-size: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.img-text p {
+    font-size: 14px;
+}
+
+.single-box {
+    position: relative;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.img-area {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 5px solid #fff;
+    overflow: hidden;
+    margin-top: 15px;
+    border-radius: 50%;
+}
+
+.img-area img {
+    width: 100%;
+}
+
+/*indicadores del carrusel, indican en que slider se encuentra*/
+.carousel-indicators {
+    top: 320px;
+}
+
+.carousel-indicators button {
+    margin-top: 20px;
+    background: rgba(101, 89, 103, 0.671) !important;
+    border-radius: 50%;
+    width: 19px !important;
+    height: 0.1px !important;
+}
+
+.carousel-indicators .active {
+    background-color: rgba(101, 89, 103) !important;
+}
+
+.sectionTestimonio {
+    margin-bottom: 60px;
+}
+
+/*Contactenos*/
+
+.contenedorContacto .tituloContacto {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    font-weight: 900;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.contenedorContacto {
+    color: white;
+}
+
+.formulario {
+    display: flex;
+    margin: 0 300px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.input {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.349);
+    padding: 20px 10px;
+}
+
+/*color del texto al interior de los input y el textarea*/
+.input::placeholder {
+    color: white;
+}
+
+input:focus{
+    border: 2px solid white;
+    /*demora mas en colocar el borde inferior de color blanco*/
+    transition: all 1s;
+}
+
+textarea:focus{
+    border:2px solid white;
+    transition: all 1s;
+}
+
+input[type="text"],
+input[tupe="email"] {
+    display: inline-block;
+    width: 49%;
+    margin-bottom: 30px;
+}
+
+.formulario textarea {
+    width: 100%;
+    margin-bottom: 30px;
+    resize: none;
+}
+
+input[type="submit"] {
+    margin: auto;
+    width: 120px;
+    text-align: center;
+    padding: 14px 0;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    color: rgba(101, 89, 103);
+    background: white;
+}
+
+.contenedorContacto p {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.iconoSubir {
+    text-align: right;
+    margin-right: 100px;
+}
+
+.contenedorContacto i {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+.contenedorContacto i:active {
+    color: rgba(255, 255, 255, 0.616);
+}
+
+.contacto {
+    position: relative;
+    background: rgba(101, 89, 103);
+    height: 100%;
+}
+
+.wave {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+}
+
+/*------REPONSIVE DESIGN O MOBILE FIRST--------*/
+/*Aplicando media queries*/
+
+/*Menu hamburguesa*/
+
+#btn-menu {
+    display: none;
+}
+
+.navegador #hamburgue {
+    display: none;
+    width: 26px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    right: 0;
+}
+
+.navegador #hamburgue:hover {
+    margin: 0;
+    padding: 0;
+    border-radius: 0%;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.616);
+    background: none;
+}
+
+
+@media screen and (max-width: 820px) {
+    .navegacion {
+        padding-right: 25px;
+    }
+
+    .navegador #hamburgue {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        background: rgba(101, 89, 103);
+        width: 19%;
+        margin-left: -200%;
+        margin-top: 12px;
+        transition: all 1s;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        padding: 5px 10px;
+    }
+
+    nav li a {
+        text-align: left;
+    }
+
+    #btn-menu:checked~nav {
+        margin-left: -95%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    /*Tienda joyeria*/
+    .img-area {
+        position: absolute;
+        width: 75px;
+        height: 75px;
+        border: 5px solid #fff;
+        overflow: hidden;
+        margin-top: 15px;
+        border-radius: 50%;
+    }
+
+    /*contactenos*/
+    .formulario {
+        display: flex;
+        margin: 0 100px;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    /*Tienda joyeria*/
+    .contenedorim {
+        margin: auto;
+        overflow: hidden;
+        width: 100%;
+        padding: 0px 50px;
+        text-align: center;
+    }
+
+    .contenedorim label {
+        margin: 5px 0;
+        padding: 0 0;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 780px) {
+    /*nav*/
+    nav{
+        width:35%
+    }
+    
+    /*Sobre nosotros*/
+    .sobreNosotros .textonoso {
+        width: 80%;
+        text-align: justify;
+        margin-bottom: 40px;
+    }
+
+    .sobreNosotros img {
+        width: 400px;
+    }
+
+    /*Tienda joyeria*/
+    .contenedorim {
+        margin: auto;
+        overflow: hidden;
+        width: 100%;
+        padding: 0px 20px;
+        text-align: center;
+    }
+
+    .contenedorim label {
+        margin: 0 5px;
+        padding: 0 15px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 10px;
+    }
+
+    .images {
+        width: 45%;
+        margin-bottom: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.5)
+    }
+
+    /*Tesimonios*/
+    .img-area {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border: 5px solid #fff;
+        overflow: hidden;
+        margin-top: 50px;
+        border-radius: 50%;
+    }
+
+    .img-text {
+        width: 100%;
+        height: 300px;
+        display: block;
+        text-align: center;
+        padding: 45% 5%;
+        background: rgba(101, 89, 103);
+        color: white;
+        border-radius: 15px;
+    }
+
+    .img-text #tituloInterior {
+        font-size: 35px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .img-text p {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .carousel-indicators button {
+        margin-top: 1180px;
+        background: rgba(101, 89, 103, 0.671) !important;
+        border-radius: 50%;
+        width: 19px !important;
+        height: 0.1px !important;
+    }
+
+    /*contactenos*/
+    .formulario {
+        display: flex;
+        margin: 0 100px;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    /*nav*/
+    nav{
+        width:45%;
+    }
+    nav ul{
+        margin-bottom: 10px;
+    }
+    nav ul li{
+       margin: 0;
+       padding-left: 40px;
+       padding-right: 0;
+       padding-top: 10px;
+       padding-bottom: 0px;
+    }
+
+    /*header*/
+    .textodere p {
+        margin-top: 10px;
+        font-size: 19px;
+        font-weight: 700;
+    }
+
+    .textoizq h2 {
+        margin-top: 10px;
+        font-size: 27px;
+        font-weight: 600;
+    }
+
+    .textoarriba h2 {
+        margin-top: 320px;
+        margin-bottom: 20px;
+        font-size: 19px;
+        font-weight: 600;
+    }
+
+    /*Sobrenosotros*/
+    .sobreNosotros {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+    }
+
+    .sobreNosotros h2 {
+        width: 100%;
+        margin: 60px auto;
+        text-align: center;
+        font-weight: 900;
+        font-size: 30px;
+        color: rgba(101, 89, 103);
+    }
+
+    .sobreNosotros .textonoso {
+        width: 80%;
+        text-align: justify;
+    }
+
+    .sobreNosotros img {
+        margin-top: 20px;
+        width: 300px;
+    }
+
+    /*Tienda joyeria*/
+    .contenedorim {
+        margin: auto;
+        overflow: hidden;
+        width: 100%;
+        padding: 0 0;
+        text-align: center;
+        display: flex;
+        flex-flow: column wrap;
+    }
+
+    .contenedorim label {
+        margin: 5px 0;
+        padding: 0 0;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 10px;
+    }
+
+    .images {
+        width: 44%;
+        margin-bottom: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.5)
+    }
+
+    /*Tesimonios*/
+    .img-area {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 5px solid #fff;
+        overflow: hidden;
+        margin-top: 50px;
+        border-radius: 50%;
+    }
+
+    .img-text {
+        width: 100%;
+        height: 300px;
+        display: block;
+        text-align: center;
+        padding: 45% 5%;
+        background: rgba(101, 89, 103);
+        color: white;
+        border-radius: 15px;
+    }
+
+    .img-text #tituloInterior {
+        font-size: 25px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 35px;
+    }
+
+    .img-text p {
+        margin-top: 20px;
+        font-size: 15px;
+    }
+
+    .carousel-indicators button {
+        margin-top: 700px;
+        background: rgba(101, 89, 103, 0.671) !important;
+        border-radius: 50%;
+        width: 19px !important;
+        height: 0.1px !important;
+    }
+
+    /*contactenos*/
+    .formulario {
+        display: flex;
+        margin: 0 60px;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+    .iconoSubir {
+        text-align: center;
+        margin:0;
+        margin-top: 20px;
+    }
+}
+
